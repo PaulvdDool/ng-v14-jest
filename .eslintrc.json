@@ -1,0 +1,68 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "**/*.stories.*",
+    "**/node_modules",
+    "**/dist",
+    "**/*.shim.ts",
+    "**/*.spec.ts",
+    "**/*.spec-old.ts",
+    "**/*.e2e-component.ts",
+    "**/e2e/**",
+    "**/__mocks/**"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-class-suffix": 0,
+        "@angular-eslint/no-empty-lifecycle-method": 0,
+        "@angular-eslint/no-output-on-prefix": "off",
+        "@angular-eslint/no-output-native": "off",
+        "@angular-eslint/use-lifecycle-interface": "off",
+        "@angular-eslint/no-input-rename": "off",
+        "@angular-eslint/no-conflicting-lifecycle": "off",
+        "eqeqeq": "off"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {
+        "@angular-eslint/template/eqeqeq": "off"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig",
+  "files": [
+    "src/index.ts"
+  ],
+  "compilerOptions": {
+    "paths": {
+      "@marquee/core/lib/util": [
+        "../util/src"
+      ]
+    }
+  }
+}

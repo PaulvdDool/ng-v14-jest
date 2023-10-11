@@ -1,27 +1,61 @@
-# NgV14Jest
+# Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.12.
+## Minimal reproduction
+This repository is a minimal reproduction of an issue I'm running into with Jest.  
+The app is an Angular v14 library with the same overall structure and configuration as the larger project that is showing the error.
 
-## Development server
+## Error to reproduce
+When running unit tests, a class initialisation is throwing an error.
+```
+TypeError: Cannot read properties of undefined (reading 'initialLoadingStatus')
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The error happens in the `StoreService` file embedded in this project.
+```angular2html
+import { Injectable } from "@angular/core";
 
-## Code scaffolding
+export enum Status {
+  IDLE,
+  PENDING,
+  DONE,
+  ERROR
+}
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+export interface StoreState {
+  loadingStatus: LoadingStatus;
+}
 
-## Build
+export interface LoadingStatus {
+  loading: Status;
+}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+@Injectable()
+export class StoreService {
+  static readonly initialLoadingStatus: LoadingStatus = {
+    loading: Status.IDLE
+  }
 
-## Running unit tests
+  static readonly initialState: StoreState = {
+    loadingStatus: StoreService.initialLoadingStatus
+  }
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  constructor() {}
 
-## Running end-to-end tests
+  setLoadingStatus( { key, status }: { key: string, status: Status }, state: StoreState ): StoreState {
+    return {
+      ...state,
+      loadingStatus: {
+        ...state.loadingStatus,
+        [key]: status
+      }
+    }
+  }
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## How to reproduce the issue
+1. Check out this repository
+2. Run `npm install`
+3. Run `npm run test`
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Note that the current version has a build issue that is unrelated to the unit test issue. I'm still figuring that one out.

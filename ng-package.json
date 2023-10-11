@@ -1,0 +1,31 @@
+{
+  "deleteDestPath": true,
+  "assets": [
+    {
+      "input": "src/client",
+      "output": "./",
+      "glob": "./**/*.xlf"
+    },
+    {
+      "input": "src/client",
+      "output": "./",
+      "glob": "./**/*.scss"
+    },
+    {
+      "input": "src/client",
+      "output": "./",
+      "glob": "./**/manifest.json"
+    },
+    {
+      "input": "src/client",
+      "output": "./",
+      "glob": "./**/*.js"
+    }
+  ],
+  "lib": {
+    "entryFile": "src/client/index.ts"
+  },
+  "allowedNonPeerDependencies": [
+    "."
+  ]
+}
