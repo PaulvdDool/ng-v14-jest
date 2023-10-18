@@ -21,10 +21,10 @@
           }
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular-devkit/build-angular:jest",
           "options": {
-            "tsConfig": "src/client/tsconfig.ng-packagr.json",
-            "configPath": "jest.config.ts"
+            "tsConfig": "tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         },
         "lint": {
@@ -43,6 +43,15 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": "9725964c-0d5e-4840-989b-a376cf36a7bc"
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }
