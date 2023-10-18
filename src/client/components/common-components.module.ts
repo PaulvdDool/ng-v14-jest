@@ -1,16 +1,13 @@
-import { NgModule } from "@angular/core";
-import { PriceComponent } from "./price/price.component";
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { PriceComponent } from './price/price.component';
 
-const COMPONENTS = [
-  PriceComponent
-]
+const COMPONENTS = [PriceComponent];
 
-@NgModule( {
-  imports: [ CommonModule ],
+@NgModule({
+  imports: [CommonModule],
   exports: COMPONENTS,
   declarations: COMPONENTS,
-  providers: []
-} )
-
+  providers: [],
+})
 export class CommonComponentsModule {}

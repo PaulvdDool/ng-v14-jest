@@ -1,5 +1,8 @@
 # Project
 
+# note:
+Upgraded to Angular 16. The test now works when run with `npx ng test`,it still fails with `npm run test` because that tries to run Jest without the new experimental Angular jest integration. But it tells you what is missing. This is fixable, but I would propose to use the CLI stuff over custom integrations.
+
 ## Minimal reproduction
 This repository is a minimal reproduction of an issue I'm running into with Jest.  
 The app is an Angular v14 library with the same overall structure and configuration as the larger project that is showing the error.
